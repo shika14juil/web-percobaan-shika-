@@ -1,0 +1,1099 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>SHIKA — Shoot In Knowledge Ambition</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#06070a;
+    --panel:rgba(255,255,255,0.03);
+    --muted:#bfc3c8;
+    --gold:#d4a63f;
+    --accent:#6a57ff;
+    --glass: rgba(255,255,255,0.04);
+    --max-width:1200px;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+    background:linear-gradient(180deg,#05060a 0%, #0c0b10 60%);
+    color:#eaeaea;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    scroll-behavior:smooth;
+  }
+  a{color:inherit}
+  .wrap{max-width:var(--max-width);margin:0 auto;padding:0 20px}
+
+/* Decorative abstract background + parallax layers */
+.bg-layer{
+  position:fixed;inset:0;z-index:-3;pointer-events:none;
+  background:
+    radial-gradient(700px 300px at 8% 18%, rgba(212,166,63,0.06), transparent 10%),
+    radial-gradient(500px 260px at 85% 70%, rgba(106,87,255,0.06), transparent 10%),
+    linear-gradient(180deg, rgba(10,10,12,0.6), rgba(16,12,6,0.85) 60%);
+  filter:blur(14px);
+}
+ 
+@media (max-width: 768px) {
+  .header {
+    width: 90%;
+    left: 5%; 
+    transform: none;
+    font-size: 14px; 
+  }
+
+  .wrap {
+    padding: 0 10px;
+  }
+}
+/* macOS-like centered nav (pill) */
+.header{
+  position:fixed;left:50%;transform:translateX(-50%);top:14px;z-index:999;
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:999px;padding:8px 14px;display:flex;gap:10px;align-items:center;
+  box-shadow:0 6px 20px rgba(0,0,0,0.45);
+  border:1px solid rgba(255,255,255,0.035);
+}
+.header a{color:var(--muted);text-decoration:none;font-weight:600;padding:8px 12px;border-radius:8px}
+.header a.active{background:linear-gradient(180deg,var(--gold), #c59d34);color:#000;box-shadow:0 6px 18px rgba(0,0,0,0.45)}
+
+/* hero */
+section{padding:120px 0}
+.hero{display:flex;align-items:center;justify-content:space-between;gap:40px;max-width:var(--max-width);margin:20px auto 0;padding:60px 20px 80px}
+.hero-left{flex:1;max-width:640px}
+.kicker{color:var(--gold);font-weight:700;margin-bottom:6px;letter-spacing:0.6px}
+.hero-title{font-size:44px;font-weight:800;color:#fff;line-height:1.02;margin-bottom:6px}
+.hero-sub{font-size:18px;color:var(--muted);margin-bottom:12px}
+.hero-desc{color:#dcdcdc;line-height:1.6;max-width:560px}
+.hero-actions{display:flex;align-items:center;gap:16px;margin-top:16px}
+.social-btn{width:42px;height:42px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04);display:inline-flex;align-items:center;justify-content:center;color:var(--gold);cursor:pointer}
+.cta-btn{background:var(--gold);color:#000;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:700;box-shadow:0 8px 18px rgba(0,0,0,0.4)}
+
+/* Background hitam lebih pekat */
+body {
+    background: #000000;
+    font-family: "Poppins", sans-serif;
+    color: #fff;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+/* Abstrak modern — lebih gelap, corak lebih tebal */
+.bg-pattern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 150%;
+    height: 150%;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.15), transparent 65%),
+        radial-gradient(circle at 80% 70%, rgba(255,200,0,0.18), transparent 70%),
+        radial-gradient(circle at 60% 20%, rgba(0,150,255,0.15), transparent 70%);
+    filter: blur(95px);
+    opacity: 0.65; /* Diperlebih gelap */
+    z-index: -1;
+}
+
+
+
+.shika-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.shika-content {
+  max-width: 850px;   /* biar paragraf tidak melebar terlalu luas */
+  width: 100%;
+  margin: 0 auto;     /* INI YANG MEMBUAT KE TENGAH */
+  padding: 20px 25px;
+}
+
+.photo-review {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.mySwiper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 0;
+}
+
+.swiper-wrapper {
+  align-items: center;
+}
+
+.swiper-slide {
+  width: 320px !important;
+  height: 460px;
+  transition: 0.4s;
+  opacity: 0.4;
+  transform: scale(0.85);
+}
+
+.swiper-slide-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: white;
+}
+
+
+
+
+/* hero right - glowing logo */
+.hero-right{width:360px;height:360px;display:flex;align-items:center;justify-content:center}
+.glow-circle{
+  width:320px;height:320px;border-radius:50%;
+  background:radial-gradient(circle at 30% 30%, rgba(212,166,63,0.25), rgba(212,166,63,0.06) 40%, transparent 60%);
+  box-shadow:0 0 90px rgba(212,166,63,0.12), inset 0 10px 40px rgba(0,0,0,0.4);
+  display:flex;align-items:center;justify-content:center;transform:translateZ(0);
+}
+.logo{
+  width:260px;height:260px;border-radius:50%;overflow:hidden;background:#fff;object-fit:cover;border:6px solid rgba(0,0,0,0.18);
+  box-shadow:0 18px 60px rgba(0,0,0,0.6);
+  transition:transform .6s cubic-bezier(.2,.9,.3,1);
+}
+.logo:hover{transform:scale(1.03) rotate(-1deg)}
+
+/* cards */
+.soft-card{ background:var(--panel); border-radius:14px;padding:18px;border:1px solid rgba(255,255,255,0.03); box-shadow:0 12px 30px rgba(0,0,0,0.45);}
+body {
+  background: radial-gradient(circle at top, #1a1a1a, #050505);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Corak abstrak utama (tebal, sesuai logo SHIKA) */
+body::before {
+  content: "";
+  position: absolute;
+  top: -100px;
+  right: -150px;
+  width: 900px;
+  height: 900px;
+  background: url('corak-shika.png'); /* masukkan file corak abstrak sesuai logomu */
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.17; 
+  filter: blur(1px);
+  z-index: -1;
+}
+
+
+
+.photo-review {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.review-title {
+  font-size: 26px;
+  color: #fff;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.mySwiper {
+  width: 100%;
+  padding: 30px 0 60px;
+}
+
+.swiper-slide {
+  width: 260px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 18px;
+  transition: 0.4s;
+  opacity: 0.5;
+  transform: scale(0.85);
+  filter: blur(1px);
+}
+
+.swiper-slide-active img {
+  transform: scale(1.15);
+  opacity: 1;
+  filter: blur(0);
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: white;
+  font-weight: bold;
+  transform: scale(1.4);
+}
+
+/* === ABOUT SECTION FIX === */
+
+/* Membatasi lebar & men-center semua teks */
+#shika-about .container {
+    max-width: 1050px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 20px;
+}
+/* FORCE SWIPER HEIGHT */
+.mySwiper {
+  width: 100%;
+  height: 520px; /* WAJIB ADA */
+  padding: 60px 0;
+}
+
+.swiper-wrapper {
+  align-items: center;
+}
+
+/* JUDUL BESAR */
+#shika-about .title {
+    font-size: 46px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 12px;
+}
+
+/* SUBTITLE */
+#shika-about .subtitle {
+    font-size: 22px;
+    color: #e8e8e8;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+/* PARAGRAF ABOUT */
+#shika-about .shika-desc {
+    font-size: 17px;
+    line-height: 1.75;
+    color: #dadada;
+    margin-bottom: 18px;
+}
+
+/* BOX HIGHLIGHT */
+#shika-about .highlight-box {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 18px 24px;
+    border-radius: 10px;
+    margin: 22px 0;
+    font-size: 17px;
+    color: #f0f0f0;
+    line-height: 1.75;
+}
+
+/* PARAGRAF PENUTUP */
+#shika-about .closing {
+    margin-top: 25px;
+    font-size: 18px;
+    color: #fff;
+    line-height: 1.8;
+}
+
+/* Corak kedua di kiri bawah */
+body::after {
+  content: "";
+  position: absolute;
+  bottom: -200px;
+  left: -150px;
+  width: 850px;
+  height: 850px;
+  background: url('corak-shika.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.1;
+  filter: blur(2px);
+  z-index: -1;
+}
+
+/* Efek glow halus untuk memberikan depth */
+.glow-layer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1200px;
+  height: 1200px;
+  background: radial-gradient(circle, rgba(255,215,0,0.05), transparent 70%);
+  transform: translate(-50%, -50%);
+  z-index: -2;
+}
+
+/* team & members */
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:18px}
+.team-card{text-align:center;background:rgba(255,255,255,0.03);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);box-shadow:0 10px 30px rgba(0,0,0,0.45)}
+.team-card img{width:100%;height:340px;object-fit:cover;border-radius:10px;margin-bottom:10px}
+.team-card h3{color:var(--gold)}
+
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.filter-btn{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);padding:8px 12px;border-radius:8px;cursor:pointer}
+.filter-btn.active{background:var(--gold);color:black;border-color:var(--gold)}
+
+.members-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:18px}
+.member-card{text-align:center;background:rgba(255,255,255,0.03);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);box-shadow:0 10px 28px rgba(0,0,0,0.45);transition:transform .22s, box-shadow .22s}
+.member-card:hover{transform:translateY(-6px) scale(1.01);box-shadow:0 22px 60px rgba(0,0,0,0.65)}
+.member-card img{width:100%;height:340px;object-fit:cover;border-radius:10px;margin-bottom:10px}
+
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.work-card {
+  display: block;
+  background: #1a1a1a;
+  padding: 15px;
+  border-radius: 14px;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+}
+
+.video-wrapper {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #000;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.video-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+#review-photo {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.review-title {
+  color: #fff;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+/* ===== SWIPER HARD RESET FIX ===== */
+.photo-review {
+  width: 100%;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.swiper-fix {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+/* MATIKAN SEMUA PENGARUH CSS LAMA */
+.photo-review *,
+.mySwiper,
+.swiper-wrapper {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  left: auto !important;
+  right: auto !important;
+  transform: none !important;
+}
+
+.mySwiper {
+  width: 100%;
+  height: 520px;
+  padding: 40px 0;
+}
+
+.swiper-wrapper {
+  align-items: center;
+}
+
+.swiper-slide {
+  width: 320px !important;
+  height: 460px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.4;
+  transform: scale(0.85);
+  transition: 0.4s;
+}
+
+.swiper-slide-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
+  display: block;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: #fff;
+  transform: scale(1.4);
+}
+
+
+
+/* works */
+.works-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:18px}
+.work-card{background:rgba(255,255,255,0.03);padding:12px;border-radius:12px;text-align:center}
+.work-card img{width:100%;height:260px;object-fit:cover;border-radius:10px;margin-bottom:10px}
+
+/* collab */
+.collab-box{max-width:760px;margin:18px auto;background:rgba(255,255,255,0.03);padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);text-align:center}
+.collab-info{color:var(--muted);font-weight:600}
+
+/* footer */
+footer{padding:26px 0;color:var(--muted);text-align:center}
+
+/* animations */
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(18px);transition:all .7s cubic-bezier(.2,.9,.3,1)}
+.reveal.visible{opacity:1;transform:none}
+
+/* parallax subtle (for hero background) */
+[data-parallax]{transform:translateY(0);transition:transform .2s linear}
+
+/* responsive */
+@media(max-width:980px){
+  .hero{flex-direction:column;align-items:center;padding:80px 20px}
+  .hero-left{text-align:center}
+  .header{left:50%;transform:translateX(-50%);width:auto}
+}
+@media(max-width:600px){
+  .logo{width:200px;height:200px}
+  .member-card img{height:300px}
+  .team-card img{height:260px}
+}
+
+/* small utility */
+.center{text-align:center}
+.small{font-size:0.92rem;color:var(--muted)}
+
+.ig-section{
+  max-width: 1100px;
+  margin: 100px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.ig-title{
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #fff;
+}
+
+.instagram-media{
+  margin: 0 auto 40px !important;
+}
+
+
+
+</style>
+</head>
+
+
+<body>
+
+<div class="bg-layer" data-parallax></div>
+
+<!-- macOS-like centered navigation -->
+<nav class="header" role="navigation" aria-label="Main menu">
+  <a href="#home" class="navlink active">Home</a>
+  <a href="#about" class="navlink">Tentang</a>
+  <a href="#core" class="navlink">Team Inti</a>
+  <a href="#members" class="navlink">Anggota</a>
+  <a href="#works" class="navlink">Karya</a>
+  <a href="#collab" class="navlink">Kolaborasi</a>
+</nav>
+
+<!-- HERO / Landing -->
+<section id="home" class="hero" aria-label="Hero SHIKA">
+  <div class="hero-left reveal" id="heroText">
+    <div class="kicker">Welcome To</div>
+    <div class="hero-title">SHIKA Organization</div>
+    <div class="hero-sub">Shoot In Knowledge Ambition</div>
+    <div class="hero-desc">“Menembakkan ambisi melalui pengetahuan.” SHIKA adalah organisasi kreatif di sekolah yang bergerak di fotografi, videografi, desain, dan seni visual — setiap karya kami punya cerita yang kuat. </div>
+
+    <div class="hero-actions" style="margin-top:20px">
+      <div style="display:flex;gap:10px">
+        <button class="social-btn" title="Instagram" onclick="window.open('https://instagram.com','_blank')">IG</button>
+        <button class="social-btn" title="YouTube" onclick="window.open('https://youtube.com','_blank')">YT</button>
+        <button class="social-btn" title="TikTok" onclick="window.open('https://tiktok.com','_blank')">TT</button>
+      </div>
+      <a class="cta-btn" href="#about">Tentang SHIKA</a>
+    </div>
+  </div>
+
+  <div class="hero-right reveal" id="heroLogo">
+    <div class="glow-circle" aria-hidden="true">
+      <!-- LOGO - replaced with your 4shared logo -->
+      <img class="logo" src="https://www.4shared.com/img/0arOyOXEku/s25/19aeedfb288/shika" alt="Logo SHIKA">
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+ <section id="shika-about">
+  <div class="container">
+
+    <h2 class="title">SHIKA (Shoot In Knowledge Ambition)</h2>
+    <p class="subtitle">Tempatnya Kreator Muda Naik Kelas</p>
+
+    <p class="shika-desc">
+      SHIKA adalah organisasi kreatif yang memadukan seni visual, fotografi, videografi, desain, dan aksi sosial dalam satu ruang
+      belajar yang hidup, modern, dan menyenangkan. Kami percaya bahwa setiap gambar bukan hanya hasil jepretan, tetapi “shot” dari
+      pengetahuan, ambisi, dan rasa ingin tahu yang terus berkembang di dalam diri setiap kreator muda.
+    </p>
+
+    <p class="shika-desc">
+      Organisasi ini awalnya berangkat dari sekelompok siswa yang senang mendokumentasikan berbagai kegiatan sekolah. Namun seiring
+      waktu, minat itu berkembang menjadi gerakan kreatif yang lebih terarah. SHIKA ingin menghadirkan wadah bagi siapa saja yang
+      ingin belajar membuat karya visual yang memiliki estetika sekaligus makna.
+    </p>
+
+    <p class="shika-desc">
+      Filosofi kami sederhana: meng-"shot" ambisi melalui pengetahuan. Setiap anggota diajak untuk memahami bahwa karya terbaik
+      lahir dari proses panjang—mulai dari belajar teknik dasar, memahami cerita, hingga mengolah sudut pandang kreatif yang unik.
+      Dengan mentoring yang intensif, workshop teknis, kelas storytelling, dan berbagai proyek kolaboratif, anggota dapat
+      mengembangkan kemampuan secara bertahap dan konsisten.
+    </p>
+
+    <p class="shika-desc">
+      SHIKA tidak hanya fokus pada penguasaan kamera atau editing. Kami juga menekankan pentingnya karakter, rasa tanggung jawab,
+      kerja sama tim, serta keberanian untuk bereksperimen. Karena dalam dunia kreatif, karya yang berkesan bukan hanya yang
+      menarik secara visual, tetapi juga yang memiliki jiwa dan identitas.
+    </p>
+
+    <div class="highlight-box">
+      SHIKA didirikan pada 14 Juli 2025 dengan visi mencetak generasi yang cinta, paham, dan mahir dalam dunia dokumentasi. Dari yang
+      awalnya bernama Madsakopas Entertainment, kini SHIKA berkembang menjadi ruang inspiratif bagi kreator muda untuk belajar,
+      bereksplorasi, dan menghasilkan karya yang berkelas.
+    </div>
+
+    <p class="shika-desc">
+      Dengan slogan khas kami, <strong>“Cekrak-Cekrek Abis”</strong>, SHIKA hadir sebagai tempat berkembangnya potensi baru di dunia
+      kreatif. Kami mendokumentasikan berbagai event dengan standar profesional, sekaligus membuka ruang bagi anggota untuk belajar
+      proses panjang di balik sebuah karya: mulai dari persiapan alat, teknik sinematik, perencanaan alur video, hingga editing yang
+      memaksimalkan cerita.
+    </p>
+
+    <p class="shika-desc">
+      Di SHIKA, setiap kamera, setiap frame, dan setiap eksperimen adalah langkah menuju karya yang lebih matang. Kami ingin setiap
+      kreator muda merasakan bahwa proses belajar bisa menyenangkan, menantang, sekaligus penuh makna.
+    </p>
+
+    <p class="closing"><strong>Selamat datang di SHIKA — ruang dimana ambisi diarahkan, pengetahuan diasah, dan karya diwujudkan.</strong></p>
+
+  </div>
+</section>
+
+
+
+<!-- TEAM INTI -->
+
+<section id="core">
+  <div class="wrap">
+    <h2 class="center">Team Inti SHIKA</h2>
+    <div class="team-grid reveal" style="margin-top:16px">
+
+      <!-- Ketua -->
+      <div class="team-card">
+        <img src="https://www.4shared.com/img/9WOFADPVfa/s25/19aca81ce80/DSC01374" alt="Muhammad Reyhan">
+        <h3>Ketua — Muhammad Reyhan</h3>
+        <p class="small">Pemimpin arah gerak SHIKA</p>
+      </div>
+
+      <!-- Sekretaris -->
+      <div class="team-card">
+        <img src="https://www.4shared.com/img/vT7MksR7ku/s25/19aca8145c8/DSC01408" alt="Faeza Bintang M">
+        <h3>Sekretaris — Faeza Bintang M</h3>
+        <p class="small">Pengatur ritme & dokumentasi</p>
+      </div>
+
+      <!-- Bendahara -->
+      <div class="team-card">
+        <img src="https://www.4shared.com/img/F8vmUOKKfa/s25/19aca815d38/DSC01401" alt="Soula Shifana">
+        <h3>Bendahara — Soula Shifana</h3>
+        <p class="small">Pengelola sumber daya organisasi</p>
+      </div>
+
+      <!-- Pembina (placeholder image used; change if you have specific) -->
+      <div class="team-card">
+        <img src="https://picsum.photos/seed/pembina/600/900" alt="Pembina">
+        <h3>Pembina — Siena Danarief</h3>
+        <p class="small">Pembimbing visi organisasi</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MEMBERS -->
+<section id="members">
+  <div class="wrap">
+    <h2 class="center">Anggota SHIKA (27)</h2>
+
+    <div class="filters reveal" style="margin-top:12px;display:flex;justify-content:center">
+      <button class="filter-btn active" data-filter="all">Semua</button>
+      <button class="filter-btn" data-filter="foto">Foto</button>
+      <button class="filter-btn" data-filter="video">Video</button>
+      <button class="filter-btn" data-filter="reels">Reels</button>
+    </div>
+
+    <div class="members-grid reveal" id="membersGrid" style="margin-top:18px">
+
+      <!-- 1 -->
+      <div class="member-card" data-type="video">
+        <img src="https://www.4shared.com/img/9WOFADPVfa/s25/19aca81ce80/DSC01374" alt="Muhammad Reyhan">
+        <strong>Muhammad Reyhan</strong><div class="small">Video</div>
+      </div>
+
+      <!-- 2 -->
+      <div class="member-card" data-type="video">
+        <img src="https://www.4shared.com/img/6cDaCQbafa/s25/19aca8243b0/DSC01340" alt="Defan Atha Fahreza">
+        <strong>Defan Atha Fahreza</strong><div class="small">Video</div>
+      </div>
+
+      <!-- 3 -->
+      <div class="member-card" data-type="video">
+        <img src="https://www.4shared.com/img/zCxpdz1Pku/s25/19aca825b20/DSC01337" alt="Mochamad Rafli">
+        <strong>Mochamad Rafli Putra Purwadi</strong><div class="small">Video</div>
+      </div>
+
+      <!-- 4 -->
+      <div class="member-card" data-type="video">
+        <img src="https://www.4shared.com/img/vT7MksR7ku/s25/19aca8145c8/DSC01408" alt="Bintang Mahaputra">
+        <strong>Bintang Mahaputra</strong><div class="small">Video</div>
+      </div>
+
+      <!-- 5 -->
+      <div class="member-card" data-type="video">
+        <img src="https://www.4shared.com/img/8Xatzxwpku/s25/19aca8210e8/DSC01355" alt="Keyzra">
+        <strong>Keyzra</strong><div class="small">Video</div>
+      </div>
+
+      <!-- 6 -->
+      <div class="member-card" data-type="video">
+        <img src="https://www.4shared.com/img/XVGMzpBpge/s25/19aca8197d0/DSC01383" alt="Nuriah Indah">
+        <strong>Nuriah Indah Lestari</strong><div class="small">Video</div>
+      </div>
+
+      <!-- 7 -->
+      <div class="member-card" data-type="video">
+        <img src="https://www.4shared.com/img/PNzDM5OYfa/s25/19aca822c40/DSC01347" alt="M. Daffa Ulhaq">
+        <strong>M. Daffa Ulhaq</strong><div class="small">Video</div>
+      </div>
+
+      <!-- 8 -->
+      <div class="member-card" data-type="foto">
+        <img src="https://www.4shared.com/img/ymQ2XnF1ge/s25/19aca818830/DSC01385" alt="Citranti">
+        <strong>Citranti Maheswari</strong><div class="small">Foto</div>
+      </div>
+
+      <!-- 9 -->
+      <div class="member-card" data-type="reels">
+        <img src="https://www.4shared.com/img/5Ztjk4JBjq/s25/19aca81da38/DSC01371" alt="Felrey">
+        <strong>Felrey Yufe Z</strong><div class="small">Reels</div>
+      </div>
+
+      <!-- 10 -->
+      <div class="member-card" data-type="foto">
+        <img src="https://www.4shared.com/img/maH6Dpqqjq/s25/19aca820918/DSC01358" alt="Farras">
+        <strong>Farras Syahputra</strong><div class="small">Foto</div>
+      </div>
+
+      <!-- 11 -->
+      <div class="member-card" data-type="video">
+        <img src="https://www.4shared.com/img/eFgV1uDMge/s25/19aca81f590/DSC01364" alt="Nizam">
+        <strong>Nizam S.</strong><div class="small">Video</div>
+      </div>
+
+      <!-- 12 -->
+      <div class="member-card" data-type="video">
+        <img src="https://www.4shared.com/img/BMjQNf8Yfa/s25/19aca81edc0/DSC01365" alt="Muhammad Fakhri">
+        <strong>Muhammad Fakhri Labib</strong><div class="small">Video</div>
+      </div>
+
+      <!-- 13 -->
+      <div class="member-card" data-type="reels">
+        <img src="https://www.4shared.com/img/s7WUCtnqfa/s25/19aca81fd60/DSC01361" alt="Rizky">
+        <strong>M. Rizky Romadhoni</strong><div class="small">Reels</div>
+      </div>
+
+      <!-- 14 -->
+      <div class="member-card" data-type="foto">
+        <img src="https://www.4shared.com/img/WxCkrku9jq/s25/19aca824f68/DSC01339" alt="Raffa">
+        <strong>Raffa Cielo Rabbani</strong><div class="small">Foto</div>
+      </div>
+
+      <!-- 15 -->
+      <div class="member-card" data-type="foto">
+        <img src="https://www.4shared.com/img/WzjJKvkYku/s25/19aca81e208/DSC01369" alt="Bhisma">
+        <strong>Bhisma Satria Pratama</strong><div class="small">Foto</div>
+      </div>
+
+      <!-- 16 -->
+      <div class="member-card" data-type="reels">
+        <img src="https://www.4shared.com/img/4h7w9rx4fa/s25/19aca8237f8/DSC01343" alt="Tristan">
+        <strong>Tristan Amrulloh Putra PM</strong><div class="small">Reels</div>
+      </div>
+
+      <!-- 17 -->
+      <div class="member-card" data-type="foto">
+        <img src="https://www.4shared.com/img/V16wLwncge/s25/19aee9dbfb8/DSC01329" alt="Himawan">
+        <strong>Himawan Ibnu Afif Muzakki</strong><div class="small">Foto</div>
+      </div>
+
+      <!-- 18 -->
+      <div class="member-card" data-type="foto">
+        <img src="https://www.4shared.com/img/03GSAVSpku/s25/19aca8218b8/DSC01353" alt="Ali Ridho">
+        <strong>Ali Ridho Abdillah</strong><div class="small">Foto</div>
+      </div>
+
+      <!-- 19 -->
+      <div class="member-card" data-type="video">
+        <img src="https://www.4shared.com/img/S9w39yFOfa/s25/19aca81b328/DSC01379" alt="Putri">
+        <strong>Putri Cahyani H</strong><div class="small">Video</div>
+      </div>
+
+      <!-- 20 -->
+      <div class="member-card" data-type="foto">
+        <img src="https://www.4shared.com/img/RggaVKXKge/s25/19aca81c2c8/DSC01377" alt="Ananta">
+        <strong>Ananta Hanum Fazila</strong><div class="small">Foto</div>
+      </div>
+
+      <!-- 21 -->
+      <div class="member-card" data-type="foto">
+        <img src="https://www.4shared.com/img/LgKo3tRwjq/s25/19aeeb439a0/raisa" alt="Raisa">
+        <strong>Raisa Shafia Asna</strong><div class="small">Foto</div>
+      </div>
+
+      <!-- 22 -->
+      <div class="member-card" data-type="foto">
+        <img src="https://www.4shared.com/img/YnRdaEc5fa/s25/19aca822088/DSC01350" alt="M. Asyam">
+        <strong>M. Asyam Maulana Putra</strong><div class="small">Foto</div>
+      </div>
+
+      <!-- 23 -->
+      <div class="member-card" data-type="reels">
+        <img src="https://www.4shared.com/img/l_GYEpUqjq/s25/19aca8168f0/DSC01397" alt="Novrin">
+        <strong>Novrin Ashila Nindya</strong><div class="small">Reels</div>
+      </div>
+
+      <!-- 24 -->
+      <div class="member-card" data-type="foto">
+        <img src="https://www.4shared.com/img/RusSZR8vge/s25/19aca81a770/DSC01381" alt="Jihan">
+        <strong>Jihan Aulia Ridwan</strong><div class="small">Foto</div>
+      </div>
+
+      <!-- 25 -->
+      <div class="member-card" data-type="video">
+        <img src="https://www.4shared.com/img/tb-kUsKejq/s25/19aca817890/DSC01395" alt="Dhea">
+        <strong>Dhea Fayi Malya Zaidah Handaru</strong><div class="small">Video</div>
+      </div>
+
+      <!-- 26 -->
+      <div class="member-card" data-type="foto">
+        <img src="https://www.4shared.com/img/F8vmUOKKfa/s25/19aca815d38/DSC01401" alt="Soula Rusli">
+        <strong>Soula Shifana Rusli</strong><div class="small">Foto</div>
+      </div>
+
+      <!-- 27 -->
+      <div class="member-card" data-type="foto">
+        <img src="https://www.4shared.com/img/E4fvT0wKge/s25/19aca814d98/DSC01406" alt="Adine">
+        <strong>Adine Akhilah Firzatullah</strong><div class="small">Foto</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section id="works">
+  <div class="wrap">
+    <h2 class="center">Karya Pilihan</h2>
+    <p class="center small">Contoh hasil karya — klik untuk melihat versi penuh.</p>
+
+    <div class="works-grid reveal" style="margin-top:18px">
+
+      <!-- Karya 1 -->
+      <a class="work-card" href="#" onclick="return false;">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/arpNF6C8JW4?si=TeTv961e46hAblN0" allowfullscreen></iframe>
+        </div>
+        <h3>Karya 1 — By Defan Atha F</h3>
+      </a>
+
+      <!-- Karya 2 -->
+      <a class="work-card" href="#" onclick="return false;">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/Wr4V0oDI5xk?si=6vSbme5ZYb1Ud9J-" allowfullscreen></iframe>
+        </div>
+        <h3>Karya 2 — By Defan Atha F</h3>
+      </a>
+
+      <!-- Karya 3 -->
+      <a class="work-card" href="#" onclick="return false;">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/VlheaUIqUWQ?si=1uqyWOmCmZe-OU20" allowfullscreen></iframe>
+        </div>
+        <h3>Karya 3 — By Nizam Shakti</h3>
+      </a>
+
+      <!-- Karya 4 -->
+      <a class="work-card" href="#" onclick="return false;">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/uSCI9fhLwbg?si=HR8zudMFKchUI90H" allowfullscreen></iframe>
+        </div>
+        <h3>Karya 4 — By Bintang M</h3>
+      </a>
+
+      <!-- Karya 5 -->
+      <a class="work-card" href="#" onclick="return false;">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/mYQ5bf6kGYA?si=nI4ScAwaPrZ6XOrP" allowfullscreen></iframe>
+        </div>
+        <h3>Karya 5 — By Bintang M</h3>
+      </a>
+
+      <!-- Karya 6 -->
+      <a class="work-card" href="#" onclick="return false;">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/wkeV9Bi99Z0?si=F9WLLf2bgNX5k7yJ" allowfullscreen></iframe>
+        </div>
+        <h3>Karya 6 — By Reyhan K F</h3>
+      </a>
+
+      <!-- Karya 7 -->
+<a class="work-card" href="#" onclick="return false;">
+  <div class="video-wrapper">
+    <iframe src="https://www.youtube.com/embed/wkeV9Bi99Z0?si=64DXpHukQ8ZX-tzw" allowfullscreen></iframe>
+  </div>
+  <h3>Karya 7 — By Reyhan K F</h3>
+</a>
+
+<!-- Karya 8 -->
+<a class="work-card" href="#" onclick="return false;">
+  <div class="video-wrapper">
+    <iframe src="https://www.youtube.com/embed/mYQ5bf6kGYA?si=TSChNHhPrIkESXZg" allowfullscreen></iframe>
+  </div>
+  <h3>Karya 8 — By Bintang M</h3>
+</a>
+
+<!-- Karya 9 -->
+<a class="work-card" href="#" onclick="return false;">
+  <div class="video-wrapper">
+    <iframe src="https://www.youtube.com/embed/B0rDAyuqWU4?si=t1faCmqZNGIkyIZo" allowfullscreen></iframe>
+  </div>
+  <h3>Karya 9 — By Bintang M</h3>
+</a>
+
+<!-- Karya 10 -->
+<a class="work-card" href="#" onclick="return false;">
+  <div class="video-wrapper">
+    <iframe src="https://www.youtube.com/embed/n674Qg1dZ08?si=QQuZ0X0cp2W8iNDj" allowfullscreen></iframe>
+  </div>
+  <h3>Karya 10 — By Reyhan K F & H.Ibnu Afif M</h3>
+</a>
+   
+<!-- Karya 11 -->
+<a class="work-card" href="#" onclick="return false;">
+  <div class="video-wrapper">
+    <iframe src="https://www.youtube.com/embed/wTegTD_b5gI?si=_O_5GaNwsRtConAp" allowfullscreen></iframe>
+  </div>
+  <h3>Karya 11 — By Reyhan K F</h3>
+</a>
+
+ </div>
+  </div>
+</section>
+
+
+
+<section class="ig-section ig-photo">
+  <h2>Karya Foto Anak SHIKA 1</h2>
+<blockquote class="instagram-media"
+  data-instgrm-permalink="https://www.instagram.com/p/DRoxkMxETmW/"
+  data-instgrm-version="14"
+  style="max-width:540px; margin:20px auto;">
+</blockquote>
+
+<script async src="https://www.instagram.com/embed.js"></script>
+
+  </div>
+</section>
+
+<section id="ig-foto">
+  <h2>Karya Foto SHIKA 2</h2>
+
+  <blockquote class="instagram-media"
+    data-instgrm-permalink="https://www.instagram.com/p/DScM31oEbNp/"
+    data-instgrm-version="14">
+  </blockquote>
+</section>
+
+<script async src="https://www.instagram.com/embed.js"></script>
+
+</div>
+  </div>
+</section>
+
+
+
+
+
+<!-- COLLAB / CONTACT -->
+<section id="collab">
+  <div class="wrap">
+    <h2 class="center">Kolaborasi & Kontak</h2>
+
+    <div class="collab-box reveal">
+      <p class="small">Punya ide kolaborasi? Hubungi kami via Instagram atau email di bawah.</p>
+      <div style="display:flex;gap:12px;align-items:center;justify-content:center;margin-top:10px">
+        <div class="collab-info">Instagram: <strong style="color:var(--gold)">@shika_org</strong></div>
+        <div class="collab-info">Email: <strong style="color:var(--gold)">shika@example.com</strong></div>
+      </div>
+      <div style="margin-top:14px">
+        <a href="mailto:shika@example.com" style="display:inline-block;padding:12px 18px;background:var(--gold);color:#000;border-radius:10px;text-decoration:none;font-weight:700">Hubungi via Email</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap" style="padding:28px 20px 40px;color:var(--muted);text-align:center">
+    <div style="margin-bottom:8px">© <span id="year"></span> SHIKA — Shoot In Knowledge Ambition</div>
+    <div class="small">Design: Abstrak Modern · Animations: Fade + Slide + Parallax · Layout: Single Page</div>
+    <div style="margin-top:12px"><a href="https://www.4shared.com/photo/0arOyOXEku/shika.html" target="_blank" style="text-decoration:underline;color:var(--gold)">Download Logo SHIKA</a></div>
+  </div>
+</footer>
+
+
+
+
+
+<script>
+/* set year */
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* Reveal on scroll */
+function reveal(){
+  document.querySelectorAll('.reveal').forEach(el=>{
+    const r = el.getBoundingClientRect();
+    if(r.top < window.innerHeight - 80) el.classList.add('visible');
+  });
+}
+window.addEventListener('scroll', reveal);
+window.addEventListener('load', reveal);
+
+/* Filter buttons */
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.member-card').forEach(card=>{
+      if(f==='all' || card.dataset.type === f) card.style.display = '';
+      else card.style.display = 'none';
+    });
+    // smooth scroll to members area for visual feedback
+    if(f) window.scrollTo({top: document.getElementById('members').offsetTop - 80, behavior:'smooth'});
+  });
+});
+
+/* Active nav on scroll (scrollspy) */
+const sections = document.querySelectorAll('section[id]');
+const navlinks = document.querySelectorAll('.navlink');
+function onScrollSpy(){
+  let fromTop = window.scrollY + 100;
+  sections.forEach(sec=>{
+    if(sec.offsetTop <= fromTop && (sec.offsetTop + sec.offsetHeight) > fromTop){
+      navlinks.forEach(a=> a.classList.remove('active'));
+      const link = document.querySelector('.navlink[href="#'+sec.id+'"]');
+      if(link) link.classList.add('active');
+    }
+  });
+}
+window.addEventListener('scroll', onScrollSpy);
+window.addEventListener('load', onScrollSpy);
+
+/* subtle parallax for background */
+const bg = document.querySelector('.bg-layer');
+window.addEventListener('scroll', ()=>{
+  const y = window.scrollY;
+  if(bg) bg.style.transform = `translateY(${y * 0.06}px)`;
+});
+
+/* smooth click for nav links */
+document.querySelectorAll('.header a').forEach(a=>{
+  a.addEventListener('click', (e)=>{
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if(target) window.scrollTo({top: target.offsetTop - 70, behavior:'smooth'});
+  });
+});
+</script>
+
+<script>
+new Swiper(".mySwiper", {
+  slidesPerView: 5,
+  centeredSlides: true,
+  spaceBetween: 40,
+  loop: true,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  breakpoints: {
+    0: {
+      slidesPerView: 1.4,
+    },
+    600: {
+      slidesPerView: 3,
+    },
+    1024: {
+      slidesPerView: 5,
+    }
+  }
+});
+</script>
+</body>
+
+</body>
+</html>
